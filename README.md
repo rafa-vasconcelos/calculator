@@ -18,7 +18,7 @@ New functionalities to the site and also small design improvements may be added 
 
 ## How to run this App
 
-This App was made using Create React App. A live version of it can be accessed through this [link](https://rafael-lima-vasconcelos.github.io/quiz/).
+This App was made using Create React App. A live version of it can be accessed through this [link](https://rafa-vasconcelos.github.io/calculator/).
 If you want to launch it locally using Create React App, you can run:
 
 ```
