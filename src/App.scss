@@ -1,0 +1,184 @@
+* {
+  user-select: none;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.standard-button {
+  cursor: pointer;
+  border: none;
+  color: white;
+  background-color: rgb(65, 63, 63);
+  font-size: 1.2rem;
+  &:hover {
+    color: black;
+    outline: 0.05rem solid grey;
+  }
+}
+
+.num-screen {
+  display: flex;
+  flex-direction: column-reverse;
+  grid-area: num-screen;
+  padding: 0;
+}
+
+.top-screen,
+.bottom-screen {
+  font-family: Orbitron;
+  color: white;
+  text-align: right;
+}
+
+.top-screen {
+  color: orange;
+  font-size: 0.8rem;
+  min-height: 3vh;
+  word-break: break-all;
+}
+
+.bottom-screen {
+  font-size: 1.2rem;
+}
+
+.ac {
+  @extend .standard-button;
+  grid-area: ac;
+  background-color: rgb(148, 60, 60);
+}
+
+.divide {
+  @extend .standard-button;
+  grid-area: divide;
+  background-color: rgb(112, 107, 107);
+}
+
+.multiply {
+  @extend .standard-button;
+  grid-area: multiply;
+  background-color: rgb(112, 107, 107);
+}
+
+.minus {
+  @extend .standard-button;
+  grid-area: minus;
+  background-color: rgb(112, 107, 107);
+}
+
+.plus {
+  @extend .standard-button;
+  grid-area: plus;
+  background-color: rgb(112, 107, 107);
+}
+
+.equal {
+  @extend .standard-button;
+  grid-area: equal;
+  background-color: rgb(79, 79, 121);
+}
+
+.dot {
+  @extend .standard-button;
+  grid-area: dot;
+}
+
+.zero {
+  @extend .standard-button;
+  grid-area: zero;
+}
+
+.one {
+  @extend .standard-button;
+  grid-area: one;
+}
+
+.two {
+  @extend .standard-button;
+  grid-area: two;
+}
+
+.three {
+  @extend .standard-button;
+  grid-area: three;
+}
+
+.four {
+  @extend .standard-button;
+  grid-area: four;
+}
+
+.five {
+  @extend .standard-button;
+  grid-area: five;
+}
+
+.six {
+  @extend .standard-button;
+  grid-area: six;
+}
+
+.seven {
+  @extend .standard-button;
+  grid-area: seven;
+}
+
+.eight {
+  @extend .standard-button;
+  grid-area: eight;
+}
+
+.nine {
+  @extend .standard-button;
+  grid-area: nine;
+}
+
+#calculator {
+  background-color: black;
+  width: 90vw;
+  min-width: 300px;
+  height: 50vh;
+  min-height: 250px;
+  margin-top: 7vh;
+  display: grid;
+  grid-template-areas:
+    "num-screen num-screen num-screen num-screen"
+    "ac ac divide multiply"
+    "ac ac divide multiply"
+    "seven eight nine minus"
+    "seven eight nine minus"
+    "four five six plus"
+    "four five six plus"
+    "one two three equal"
+    "one two three equal"
+    "zero zero dot equal"
+    "zero zero dot equal";
+  padding: 5px;
+  gap: 1px;
+  @media (min-width: 400px) {
+    max-width: none;
+    width: 25vw;
+    min-height: 60vh;
+    margin-top: 15vh;
+  }
+}
+
+footer {
+  @media (min-width: 400px) {
+    width: 15vw;
+    font-size: small;
+    margin-top: 20px;
+  }
+  margin-top: 30px;
+  text-align: center;
+  width: 60vw;
+  font-family: Monospace, "Times New Roman", Times, serif;
+}
+
+footer > a {
+  text-decoration: none;
+  color: rgb(4, 4, 92);
+}
