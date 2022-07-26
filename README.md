@@ -10,7 +10,7 @@ This is a basic calculator app made with React.
 
 ## Technologies Used
 
-This project was mainly written with React, JavaScript, HTML and CSS and Sass.
+This project was mainly written with React, JavaScript, HTML, CSS and Sass.
 
 ## Future improvements
 
