@@ -13,16 +13,25 @@ const Calculator = () => {
       if (topScreen.match(/=/)) {
         setTopScreen(num);
         setBottomScreen(num);
+      } else if (topScreen.match(/[^.0]0$/) && num === "0") {
+        return;
+      } else if (bottomScreen === "0" && num === ".") {
+        setBottomScreen("0.");
+        setTopScreen((prevState) => `${prevState}.`);
       } else if (bottomScreen === "0") {
         setTopScreen(num);
         setBottomScreen(num);
       } else {
+        if (bottomScreen.match(/\./g)?.length === 1 && num === ".") {
+          return;
+        }
+
         if (
           topScreen.split("").length < 30 &&
           bottomScreen.split("").length < 18
         ) {
           setTopScreen((prevState) => {
-            return `${prevState.replace(/(?<=[^0-9])0+/, "")}${num}`;
+            return `${prevState.replace(/(?<=[^0-9.+-x/])0+/, "")}${num}`;
           });
         }
         if (
@@ -30,7 +39,7 @@ const Calculator = () => {
           topScreen.split("").length < 30
         ) {
           setBottomScreen((prevState) => {
-            return `${prevState.replace(/^0|\+|x|-|\//g, "")}${num}`;
+            return `${prevState.replace(/^0[^.]|\+|x|-|\//g, "")}${num}`;
           });
         }
         if (
@@ -39,6 +48,14 @@ const Calculator = () => {
         ) {
           setLimitReached(true);
           setTimeout(() => setLimitReached(false), 800);
+        }
+        if (/\.+/.test(bottomScreen)) {
+          setBottomScreen(
+            (prevState) => `${prevState.replace(/(?<=[.])\.+/, "")}`
+          );
+          setTopScreen(
+            (prevState) => `${prevState.replace(/(?<=[.])\.+/, "")}`
+          );
         }
       }
     };
@@ -71,20 +88,20 @@ const Calculator = () => {
       }
     };
 
-    switch (event.target.className) {
-      case "ac":
+    switch (event.target.id) {
+      case "clear":
         return insertOperation("ac");
       case "divide":
         return insertOperation("/");
-      case "plus":
+      case "add":
         return insertOperation("+");
-      case "minus":
+      case "subtract":
         return insertOperation("-");
       case "multiply":
         return insertOperation("x");
-      case "equal":
+      case "equals":
         return insertOperation("=");
-      case "dot":
+      case "decimal":
         return insertNumber(".");
       case "zero":
         return insertNumber("0");
@@ -112,26 +129,26 @@ const Calculator = () => {
   };
 
   const data = [
-    { className: "ac", text: "AC" },
-    { className: "divide", text: "/" },
-    { className: "multiply", text: "x" },
-    { className: "minus", text: "-" },
-    { className: "seven", text: "7" },
-    { className: "eight", text: "8" },
-    { className: "nine", text: "9" },
-    { className: "four", text: "4" },
-    { className: "five", text: "5" },
-    { className: "six", text: "6" },
-    { className: "one", text: "1" },
-    { className: "two", text: "2" },
-    { className: "three", text: "3" },
-    { className: "zero", text: "0" },
-    { className: "equal", text: "=" },
-    { className: "dot", text: "." },
-    { className: "plus", text: "+" },
+    { id: "clear", text: "AC" },
+    { id: "divide", text: "/" },
+    { id: "multiply", text: "x" },
+    { id: "subtract", text: "-" },
+    { id: "seven", text: "7" },
+    { id: "eight", text: "8" },
+    { id: "nine", text: "9" },
+    { id: "four", text: "4" },
+    { id: "five", text: "5" },
+    { id: "six", text: "6" },
+    { id: "one", text: "1" },
+    { id: "two", text: "2" },
+    { id: "three", text: "3" },
+    { id: "zero", text: "0" },
+    { id: "equals", text: "=" },
+    { id: "decimal", text: "." },
+    { id: "add", text: "+" },
   ].map((item, index) => {
     return (
-      <button className={item.className} key={index} onClick={handleClick}>
+      <button id={item.id} key={index} onClick={handleClick}>
         {item.text}
       </button>
     );
@@ -139,11 +156,11 @@ const Calculator = () => {
 
   return (
     <div id="calculator">
-      <div className="num-screen">
-        <div className="bottom-screen">
+      <div id="display">
+        <div id="input">
           {limitReached ? "DIGIT LIMIT REACHED" : bottomScreen}
         </div>
-        <div className="top-screen">{topScreen}</div>
+        <div id="output">{topScreen}</div>
       </div>
       {data}
     </div>

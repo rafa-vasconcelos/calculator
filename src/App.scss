@@ -20,118 +20,118 @@
   }
 }
 
-.num-screen {
+#display {
   display: flex;
   flex-direction: column-reverse;
   grid-area: num-screen;
   padding: 0;
 }
 
-.top-screen,
-.bottom-screen {
+#output,
+#input {
   font-family: Orbitron;
   color: white;
   text-align: right;
 }
 
-.top-screen {
+#output {
   color: orange;
-  font-size: 0.8rem;
+  font-size: 1rem;
   min-height: 3vh;
   word-break: break-all;
 }
 
-.bottom-screen {
-  font-size: 1.2rem;
+#input {
+  font-size: 1.3rem;
 }
 
-.ac {
+#clear {
   @extend .standard-button;
-  grid-area: ac;
+  grid-area: clear;
   background-color: rgb(148, 60, 60);
 }
 
-.divide {
+#divide {
   @extend .standard-button;
   grid-area: divide;
   background-color: rgb(112, 107, 107);
 }
 
-.multiply {
+#multiply {
   @extend .standard-button;
   grid-area: multiply;
   background-color: rgb(112, 107, 107);
 }
 
-.minus {
+#subtract {
   @extend .standard-button;
-  grid-area: minus;
+  grid-area: subtract;
   background-color: rgb(112, 107, 107);
 }
 
-.plus {
+#add {
   @extend .standard-button;
-  grid-area: plus;
+  grid-area: add;
   background-color: rgb(112, 107, 107);
 }
 
-.equal {
+#equals {
   @extend .standard-button;
-  grid-area: equal;
+  grid-area: equals;
   background-color: rgb(79, 79, 121);
 }
 
-.dot {
+#decimal {
   @extend .standard-button;
-  grid-area: dot;
+  grid-area: decimal;
 }
 
-.zero {
+#zero {
   @extend .standard-button;
   grid-area: zero;
 }
 
-.one {
+#one {
   @extend .standard-button;
   grid-area: one;
 }
 
-.two {
+#two {
   @extend .standard-button;
   grid-area: two;
 }
 
-.three {
+#three {
   @extend .standard-button;
   grid-area: three;
 }
 
-.four {
+#four {
   @extend .standard-button;
   grid-area: four;
 }
 
-.five {
+#five {
   @extend .standard-button;
   grid-area: five;
 }
 
-.six {
+#six {
   @extend .standard-button;
   grid-area: six;
 }
 
-.seven {
+#seven {
   @extend .standard-button;
   grid-area: seven;
 }
 
-.eight {
+#eight {
   @extend .standard-button;
   grid-area: eight;
 }
 
-.nine {
+#nine {
   @extend .standard-button;
   grid-area: nine;
 }
@@ -140,22 +140,22 @@
   background-color: black;
   width: 90vw;
   min-width: 300px;
-  height: 50vh;
+  height: 65vh;
   min-height: 250px;
   margin-top: 7vh;
   display: grid;
   grid-template-areas:
     "num-screen num-screen num-screen num-screen"
-    "ac ac divide multiply"
-    "ac ac divide multiply"
-    "seven eight nine minus"
-    "seven eight nine minus"
-    "four five six plus"
-    "four five six plus"
-    "one two three equal"
-    "one two three equal"
-    "zero zero dot equal"
-    "zero zero dot equal";
+    "clear clear divide multiply"
+    "clear clear divide multiply"
+    "seven eight nine subtract"
+    "seven eight nine subtract"
+    "four five six add"
+    "four five six add"
+    "one two three equals"
+    "one two three equals"
+    "zero zero decimal equals"
+    "zero zero decimal equals";
   padding: 5px;
   gap: 1px;
   @media (min-width: 400px) {
